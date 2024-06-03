@@ -1,4 +1,4 @@
-# transient_interactions
+# Transient Interactions
 This repository currently contains the necessary scripts for measuring the distance distribution from a given set of labelling distances and then calculating the fraction of transient interactions and polymer scaling exponent using a previuosly established adjusted polymer model. 
 
 ## polymer.py
