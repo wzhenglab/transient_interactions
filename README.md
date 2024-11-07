@@ -11,7 +11,7 @@ File which takes dye.py as an argument and calculates the resulting p(r) distrib
 example labelling distance file. Contains the distance between two labelling positions of a model peptide for 1/100 of every frames from coarse-grained simulation. Units of distance are in nanometers.
 
 ## get_lcp.py
-File which takes any sequnece file as an argument and calculates the highest and lowest values of effective patch length (l_{cp}) as well as their position along the sequence and the size of the charge patch in residues.
+File which takes any sequnece file as an argument and calculates the highest and lowest values of the effective patch length ($l_{cp}$) as well as their position along the sequence and the size of the charge patch in residues.
 
 ## seq.dat
 Example sequence file containing the alphabetic sequence for the disordered region of the protein SLCA1. Can be replaced by any target protein sequence.
