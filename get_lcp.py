@@ -21,8 +21,8 @@ def ref_ft(patch):
     """
     calculate f_t30, the reference f_t if the patches were 30 residues apart
     """
-    a1=0.49
-    a2=8.6
+    b1=0.49
+    b2=8.6
     guess=1-(1/(1+np.exp(a1*(patch-a2))))
     return guess
 
@@ -31,7 +31,7 @@ def calc_ft(patch,sep):
     """
     use the reference f_t30 and sequence separation to calculate f_t
     """
-    y=-0.019
+    c=-0.019
     f0=ref_ft(patch)
     ft=f0*np.exp(y*(1-f0)*(sep-30))
     return ft
