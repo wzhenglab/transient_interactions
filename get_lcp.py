@@ -27,15 +27,30 @@ def ref_ft(patch):
     return guess
 
 
-def calc_ft(patch,sep):
+def asym_corr(patch1,patch2,ft):
+    """
+    an empirical correction to the f_t estimation based on the asymmetry of the two charged patches
+    """
+    a=0.232
+    b=0.577
+    C=a*abs(patch1-patch2)**b
+    return ft*(1-C)
+
+
+def calc_ft(patch1,patch2,sep):
     """
     use the reference f_t30 and sequence separation to calculate f_t
     """
     c=-0.019
+    patch=patch1*patch2
+    # calculate f_t for the reference sequence separation (s=30)
     f0=ref_ft(patch)
+    # rescale according to actual sequence separation
     ft=f0*np.exp(y*(1-f0)*(sep-30))
+    # apply the charge asymmetry correction
+    ft=asym_corr(patch1,patch2,ft)
     return ft
-
+    
 
 def calc_lcp(patch,pos):
     """
@@ -93,8 +108,7 @@ if __name__ == "__main__":
     lcp1,N1,pos1=p1
     lcp2,N2,pos2=p2
     sep=abs(N1-N2)
-    lcp=abs(lcp1*lcp2)
-    ft=calc_ft(lcp,sep)
+    ft=calc_ft(lcp1,lcp2,sep)
     print(u'$l_{cp,+}$= ',lcp1,', at residue:',pos1,', of size:',N1)
     print(u'$l_{cp,-}$= ',lcp2,', at residue:',pos2,', of size:',N2)
     print(u'$f_t$= ',ft)
